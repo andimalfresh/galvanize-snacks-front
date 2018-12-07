@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import post from './components/Post'
+import snacks from './components/Snacks'
+import usersForm from './components/UsersForm'
 
 class App extends Component {
   render() {
