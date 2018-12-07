@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header'
 import SearchField from './components/searchField'
-// import Post from './components/Post'
+import Post from './components/Post'
 import Snacks from './components/Snacks'
 import UsersForm from './components/UsersForm'
 
@@ -16,6 +16,18 @@ class App extends Component {
       searched:[],
     }
   }
+
+  // async componentDidMount() {
+  //   let result = await fetch("");
+  //   let data = await result.json();
+  //   console.log("data", data);
+  //   this.setState({
+  //     snackList: data,
+  //     searched: data
+  //   });
+  // }
+
+
 
   onChangeSearch = event => {
     event.preventDefault();
@@ -42,8 +54,13 @@ class App extends Component {
           <div className="formCont">
             <UsersForm/>
           </div>
-          <div className="snackCont"> 
-            <Snacks/>
+          <div className="postAndSnackCont">
+            <div className="snackCont"> 
+              <Snacks searched={this.state.searched}/>
+            </div>
+            <div className="postCont">
+              <Post/>
+            </div>
           </div>
 
       </div>

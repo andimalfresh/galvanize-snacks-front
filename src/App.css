@@ -5,6 +5,7 @@
 .headerCont{
   display: flex;
   justify-content: space-around;
+  align-content: center;
   width: 100%;
   background-color: slategray;
 }
@@ -62,8 +63,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: flex-start;
-  height: auto;
-  width: 20%;
+  height: 30em;
   padding: 1em;
   background-color: aliceblue;
   border: black .2em solid;
@@ -71,5 +71,14 @@
   border-radius: 5%;
 }
 .imgThumb{
-  height: auto;
+  height: 20em;
+}
+.postAndSnackCont{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+.postCont{
+  width: 30em;
 }
