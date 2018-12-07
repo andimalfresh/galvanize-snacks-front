@@ -17,15 +17,15 @@ class App extends Component {
     }
   }
 
-  // async componentDidMount() {
-  //   let result = await fetch("");
-  //   let data = await result.json();
-  //   console.log("data", data);
-  //   this.setState({
-  //     snackList: data,
-  //     searched: data
-  //   });
-  // }
+  async componentDidMount() {
+    let result = await fetch("https://g102dbredux.herokuapp.com/");
+    let data = await result.json();
+    console.log("data", data);
+    this.setState({
+      snackList: data,
+      searched: data
+    });
+  }
 
 
 
@@ -38,8 +38,9 @@ class App extends Component {
       searched: filteredSnacks
     });
   };
-  findMatches(words, snacks) {
-    return snacks.filter(item => {
+  
+  findMatches(words, snackList) {
+    return snackList.filter(item => {
       const regex = new RegExp(words, "gi");
       return item.title.match(regex) || item.name.match(regex);
     });
