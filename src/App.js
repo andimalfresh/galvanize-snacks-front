@@ -1,28 +1,51 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import post from './components/Post'
-import snacks from './components/Snacks'
-import usersForm from './components/UsersForm'
+import Header from './components/Header'
+import SearchField from './components/searchField'
+// import Post from './components/Post'
+import Snacks from './components/Snacks'
+import UsersForm from './components/UsersForm'
 
 class App extends Component {
+  constructor(props) {
+    super();
+    this.state ={
+      snacksList: [],
+      userList:[],
+      searched:[],
+    }
+  }
+
+  onChangeSearch = event => {
+    event.preventDefault();
+    const value = event.target.value;
+    const snackList = this.state.snackList;
+    const filteredSnacks = this.findMatches(value, snackList);
+    this.setState({
+      searched: filteredSnacks
+    });
+  };
+  findMatches(words, snacks) {
+    return snacks.filter(item => {
+      const regex = new RegExp(words, "gi");
+      return item.title.match(regex) || item.name.match(regex);
+    });
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+          <Header />
+          <div className="topnav">
+            <SearchField searched={this.state.searched} onChangeSearch={this.onChangeSearch} />
+          </div>
+          <div className="formCont">
+            <UsersForm/>
+          </div>
+          <div className="snackCont"> 
+            <Snacks/>
+          </div>
+
       </div>
     );
   }
